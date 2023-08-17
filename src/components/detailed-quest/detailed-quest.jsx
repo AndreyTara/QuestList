@@ -5,64 +5,80 @@ import { ReactComponent as IconPerson } from 'assets/img/icon-person.svg';
 import { ReactComponent as IconPuzzle } from 'assets/img/icon-puzzle.svg';
 import * as S from './detailed-quest.styled';
 import { BookingModal } from './components/components';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
-const DetailedQuest = () => {
-  const [isBookingModalOpened, setIsBookingModalOpened] = useState(false);
+const DetailedQuest = ({ id, questsListData }) => {
+	const params = useParams();
+	const current = params.id;
+	const [isBookingModalOpened, setIsBookingModalOpened] = useState(false);
 
-  const onBookingBtnClick = () => {
-    setIsBookingModalOpened(true);
-  };
+	const onBookingBtnClick = () => {
+		setIsBookingModalOpened(true);
+	};
 
-  return (
-    <MainLayout>
-      <S.Main>
-        <S.PageImage
-          src="img/cover-maniac.jpg"
-          alt="Квест Маньяк"
-          width="1366"
-          height="768"
-        />
-        <S.PageContentWrapper>
-          <S.PageHeading>
-            <S.PageTitle>Маньяк</S.PageTitle>
-            <S.PageSubtitle>приключения</S.PageSubtitle>
-          </S.PageHeading>
+	console.log(current);
+	console.log(questsListData);
+	// const bPic = {
+	// 	src: "img/cover-maniac.jpg",
+	// 	title: "Маньяк",
+	// 	alt: `Квест ${this.title}`,
+	// 	typeQuest: "приключения",
+	// 	duration: '90 мин',
+	// 	numPeople: '3–6 чел',
+	// 	complication: 'средний',
+	// 	description: "В комнате с приглушённым светом несколько человек, незнакомых друг		с другом, приходят в себя. Никто не помнит, что произошло прошлым		вечером. Руки и ноги связаным, но одному из вас получилось		освободиться. На стене висит пугающий таймер и запущен отстёт		60&nbsp;минут. Сможете ли вы разобраться в стрессовой ситуации,		помочь другим, разобраться что произошло и выбраться из комнаты?"
+	// }
 
-          <S.PageDescription>
-            <S.Features>
-              <S.FeaturesItem>
-                <IconClock width="20" height="20" />
-                <S.FeatureTitle>90 мин</S.FeatureTitle>
-              </S.FeaturesItem>
-              <S.FeaturesItem>
-                <IconPerson width="19" height="24" />
-                <S.FeatureTitle>3–6 чел</S.FeatureTitle>
-              </S.FeaturesItem>
-              <S.FeaturesItem>
-                <IconPuzzle width="24" height="24" />
-                <S.FeatureTitle>средний</S.FeatureTitle>
-              </S.FeaturesItem>
-            </S.Features>
+	return (
+		<MainLayout>
+			<S.Main>
+				<S.PageImage
+					src="img/cover-maniac.jpg"
+					alt="Квест Маньяк"
+					width="1366"
+					height="768"
+				/>
+				<S.PageContentWrapper>
+					<S.PageHeading>
+						<S.PageTitle>Маньяк</S.PageTitle>
+						<S.PageSubtitle>приключения</S.PageSubtitle>
+					</S.PageHeading>
 
-            <S.QuestDescription>
-              В комнате с приглушённым светом несколько человек, незнакомых друг
-              с другом, приходят в себя. Никто не помнит, что произошло прошлым
-              вечером. Руки и ноги связаным, но одному из вас получилось
-              освободиться. На стене висит пугающий таймер и запущен отстёт
-              60&nbsp;минут. Сможете ли вы разобраться в стрессовой ситуации,
-              помочь другим, разобраться что произошло и выбраться из комнаты?
-            </S.QuestDescription>
+					<S.PageDescription>
+						<S.Features>
+							<S.FeaturesItem>
+								<IconClock width="20" height="20" />
+								<S.FeatureTitle>90 мин</S.FeatureTitle>
+							</S.FeaturesItem>
+							<S.FeaturesItem>
+								<IconPerson width="19" height="24" />
+								<S.FeatureTitle>3–6 чел</S.FeatureTitle>
+							</S.FeaturesItem>
+							<S.FeaturesItem>
+								<IconPuzzle width="24" height="24" />
+								<S.FeatureTitle>средний</S.FeatureTitle>
+							</S.FeaturesItem>
+						</S.Features>
 
-            <S.QuestBookingBtn onClick={onBookingBtnClick}>
-              Забронировать
-            </S.QuestBookingBtn>
-          </S.PageDescription>
-        </S.PageContentWrapper>
+						<S.QuestDescription>
+							В комнате с приглушённым светом несколько человек, незнакомых друг
+							с другом, приходят в себя. Никто не помнит, что произошло прошлым
+							вечером. Руки и ноги связаным, но одному из вас получилось
+							освободиться. На стене висит пугающий таймер и запущен отстёт
+							60&nbsp;минут. Сможете ли вы разобраться в стрессовой ситуации,
+							помочь другим, разобраться что произошло и выбраться из комнаты?
+						</S.QuestDescription>
 
-        {isBookingModalOpened && <BookingModal />}
-      </S.Main>
-    </MainLayout>
-  );
+						<S.QuestBookingBtn onClick={onBookingBtnClick}>
+							Забронировать
+						</S.QuestBookingBtn>
+					</S.PageDescription>
+				</S.PageContentWrapper>
+
+				{isBookingModalOpened && <BookingModal />}
+			</S.Main>
+		</MainLayout>
+	);
 };
 
 export default DetailedQuest;

@@ -1,6 +1,9 @@
 Имя студента: 'Andry'
 Время затраченное на разработку проекта:
 
+add "start:client": "react-scripts --openssl-legasy-provider start",
+run npm install react-scripts --save-dev
+
 ## Скрипты
 
 В проекте, можно использовать следующие скрипты
