@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Button } from 'components/common/common';
 
 const Main = styled.main`
-  max-width: 556px;
+  max-width: 676px;
   margin-top: 149px;
   margin-bottom: 149px;
   margin-left: 43.92vw;
@@ -112,16 +112,16 @@ const QuestBookingBtn = styled(Button).attrs({ type: 'button' })`
 `;
 
 export {
-  Main,
-  PageImage,
-  PageContentWrapper,
-  PageHeading,
-  PageTitle,
-  PageSubtitle,
-  PageDescription,
-  Features,
-  FeaturesItem,
-  FeatureTitle,
-  QuestDescription,
-  QuestBookingBtn,
+	Main,
+	PageImage,
+	PageContentWrapper,
+	PageHeading,
+	PageTitle,
+	PageSubtitle,
+	PageDescription,
+	Features,
+	FeaturesItem,
+	FeatureTitle,
+	QuestDescription,
+	QuestBookingBtn,
 };

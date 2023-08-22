@@ -10,22 +10,19 @@ import WrongPath from 'components/wrongPath/wrongPath';
 import Home from 'components/home/home';
 import { appTheme } from './common';
 import * as S from './app.styled';
-import { useState, useEffect } from 'react'
+import { useQuery } from 'react-query'
 
 const App = () => {
-
-	const [questsListData1, setQuestsListData1] = useState([]); // Состояние активной вкладки, по умолчанию []
-
-	useEffect(() => {
-		fetch(`http://localhost:3001/quests`)
-			.then((response) => response.json())
-			.then((json) => {
-				setQuestsListData(json)
-			})
-			.catch((error) => {
-				console.error('Error fetch data exchangeRate:', error)
-			});
-	}, [])
+	const { data: previewList, isLoading, error } = useQuery('previewList', async () => {
+		const response = await fetch('http://localhost:3001/quests');
+		return response.json();
+	})
+	if (isLoading) {
+		return <div>Loading ...</div>
+	}
+	if (error) {
+		return <div>Error: {error.message}</div>
+	}
 
 	return (
 		<ThemeProvider theme={appTheme}>
@@ -33,23 +30,23 @@ const App = () => {
 			<S.GlobalStyle />
 			<Router>
 				<Switch>
-					<Route exact path="/quest_:id">
-						<DetailedQuest questsListData={questsListData1} />
+					<Route exact path="/quests/:id">
+						<DetailedQuest previewList={previewList} />
 					</Route>
 					<Route exact path="/contacts">
 						<Contacts />
 					</Route>
-					<Route exact path="/wrongPath">
+					<Route exact path="/newcomers">
 						<WrongPath />
 					</Route>
-					<Route exact path="/wrongPath1">
+					<Route exact path="/reviews">
 						<WrongPath />
 					</Route>
-					<Route exact path="/wrongPath2">
+					<Route exact path="/stocks">
 						<WrongPath />
 					</Route>
 					<Route path="/">
-						<Home questsListData={questsListData1} />
+						<Home previewList={previewList} />
 					</Route>
 				</Switch>
 			</Router>

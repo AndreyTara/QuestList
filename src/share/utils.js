@@ -1,12 +1,12 @@
 export function translator(word, vocabluary) {
 	let isFind = '';
-	word = word.toLowerCase();
+	const word1 = word.toLowerCase();
 	vocabluary.forEach((el) => {
 		for (let key in el) {
-			if (key === word) {
+			if (key === word1) {
 				return (isFind = el[key])
 			}
-			if (el[key] === word) {
+			if (el[key] === word1) {
 				return (isFind = key)
 			}
 		}
@@ -21,7 +21,7 @@ export function translator(word, vocabluary) {
 }
 
 
-export const filterItem = (item, arr) => {
+const filterItem = (item, arr) => {
 	const currentTemp = [];
 	arr.forEach((el) => {
 		for (let key in el) {
@@ -32,3 +32,17 @@ export const filterItem = (item, arr) => {
 	})
 	return currentTemp
 };
+
+export const firstToUpper = (inStr) => {
+	return (inStr[0].toUpperCase() + inStr.slice(1))
+}
+
+export function getArrList(isAllQuests, previewList, translationName) {
+	let asd = [];
+	if (isAllQuests) {
+		asd = previewList;
+	} else {
+		asd = filterItem(translationName, previewList)
+	}
+	return asd
+}

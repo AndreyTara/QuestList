@@ -17,13 +17,11 @@ export const catalogListNav = [
 export const vocabluary = [
 	{ "hard": 'сложный' },
 	{ "medium": 'средний' },
-	{ "light": 'легкий' },
+	{ "easy": 'легкий' },
 	{ "all quests": 'все квесты' },
 	{ "adventures": 'приключения' },
 	{ "horror": 'ужасы' },
 	{ "mystic": 'мистика' },
 	{ "detective": 'детектив' },
-	{ 'sci-fi': "sci-fi" }
+	{ "sci-fi": "sci-fi" }
 ]
-
-
